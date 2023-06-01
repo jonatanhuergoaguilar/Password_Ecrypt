@@ -13,11 +13,11 @@
 
 <body>
 <div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-6">
+    <div class="row ">
+        <div class="col-sm-6 col-md-6  mb-3">
             <div class="card">
-                <div class="card-body">
-                    <h1 class="card-title text-center">Encryption Your Password</h1>
+                <div class="card-body p-5">
+                    <h3 class="card-title text-center">Encryption Your Password</h3>
                     <form action="/encrypt" method="POST">
                         <div class="form-group">
                             <label class="form-label">
@@ -29,27 +29,23 @@
                 </div>
             </div>
         </div>
-    </div>
-</div>
-
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-6">
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title text-center">Encrypted Passwords</h5>
+        <div class="col-sm-6 col-md-6  mb-3">
+            <div class="card shadow-sm card-animated">
+                <div class="card-body p-5">
+                    <h3 class="card-title text-center">Encrypted Passwords</h3>
                     <ul class="list-group">
                         {% for hashed_password in hashed_passwords %}
-                            <li class="list-group-item">{{ hashed_password }}</li>
+                            <li class="card">{{ hashed_password }}</li>
                         {% endfor %}
                     </ul>
                 </div>
             </div>
         </div>
+
+
     </div>
 </div>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.3/js/bootstrap.bundle.min.js" ></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.3/js/bootstrap.bundle.min.js"></script>
 
 </body>
 </html>
