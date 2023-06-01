@@ -2,26 +2,31 @@ name: Encrypt Your Password
 on:
   push:
     branches:
-      - main
+      - master
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: Install Python
-        run: |
-          pip install -r requirements.txt
-      - name: Run Flask App
-        run: flask run --host 0.0.0.0
+      - name: Set up Python 3.8
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.8
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+      - name: Build app
+        run: python app.py
 
   deploy:
     runs-on: windows-latest
-    needs: build
     steps:
       - uses: actions/checkout@v2
-      - name: Install Python
-        run: |
-          pip install -r requirements.txt
-      - name: Run Flask App
-        run: flask run --host 0.0.0.0
+      - name: Set up Python 3.8
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.8
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+      - name: Deploy app
+        run: python app.py
