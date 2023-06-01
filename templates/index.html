@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css"/>
+
+    <link rel="stylesheet" href="{{ url_for ('static', filename='css/own_style.css') }}">
+    <title>SHA-256 Encryption</title>
+</head>
+
+<body>
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <h1 class="card-title text-center">Encryption Your Password</h1>
+                    <form action="/encrypt" method="POST">
+                        <div class="form-group">
+                            <label class="form-label">
+                                <input class="form-control" type="text" name="password" placeholder="Yor password for encrypt">
+                            </label>
+                        </div>
+                        <button class="btn btn-primary" type="submit" value="Encrypt">Encrypt Your Password</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title text-center">Encrypted Passwords</h5>
+                    <ul class="list-group">
+                        {% for hashed_password in hashed_passwords %}
+                            <li class="list-group-item">{{ hashed_password }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.3/js/bootstrap.bundle.min.js" ></script>
+
+</body>
+</html>
